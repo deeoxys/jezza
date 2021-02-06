@@ -33,4 +33,4 @@ GIVE ALL <role> -> Give all users a specified role (requires an admin role).
 OTHER FEATURES:
 Has a sort of database of messages sent by users in the ./messages/ directory.
 Filters out bad words which can be specified if you make the ./assets/.gitignore badwords.txt directory (each line is a bad word).
-Bot key is stored safely in ./assets/.gitignore jezza.txt
+Bot key is stored safely in ./assets/.gitignore NAME.txt (name can be changed in jezza.py).
