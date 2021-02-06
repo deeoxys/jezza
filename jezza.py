@@ -24,7 +24,7 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    filepath = "messages\\" + str(message.author.id) + ".txt"
+    filepath = "messages\\" + str(message.author) + ".txt"
     text = str(message.content)
     file_name = ""
     quotes = []
@@ -32,7 +32,7 @@ async def on_message(message):
 
     if not message.content.startswith("/") and not message.content.startswith("!") and not message.content.startswith("-") and not message.content.startswith("j"):
         f = open(str(filepath), "a")
-        f.write(str(message.content)+ "$$DELIMITER$$" + str(datetime.datetime.now().strftime("%x %X")) + "\n")
+        f.write(str(message.content) + "$$DELIMITER$$" + str(datetime.datetime.now().strftime("%x %X")) + "\n")
         f.close()
 
     if text.upper().startswith(prefix + "QUOTE"):
@@ -72,7 +72,7 @@ async def on_message(message):
     if text.upper().startswith(prefix + "GIVE ALL"):
 
         role_names = [role.name for role in message.author.roles]
-        if not "Bojo" in role_names:
+        if not "God" in role_names:
             log("Non-admin user " + str(message.author) + " tried to use admin command (GIVE ALL)!")
             return
 
