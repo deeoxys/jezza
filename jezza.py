@@ -51,7 +51,7 @@ async def on_message(message):
         # open file with append mode
         f = open(str(filepath), "a")
         # append message with the DELIMITER that hopefully no one ever sends! and the datetime
-        f.write(str(message.content) + "$$DELIMITER$$" + str(datetime.datetime.now().strftime("%x %X")) + "\n")
+        f.write(str(message.content) + "$$DELIMITER$$" + str(datetime.datetime.now().strftime("%c")) + "\n")
         f.close()
 
     """ QUOTE COMMAND"""
@@ -96,6 +96,39 @@ async def on_message(message):
         log("Got quote: " + quoteMsg + ".")
         await message.channel.send(quoteMsg)
 
+    # """LASTWORDS COMMAND"""
+    # if text.upper().startswith(prefix + "LASTWORDS"):
+    #     # some variables we need
+    #     quoteMsg = ""
+    #     userToQuote = ""
+    #
+    #
+    #     # one of many try catches that hopefully stop the main exceptions that could occur
+    #     try:
+    #         userToQuote = client.get_user(message.mentions[0].id)
+    #     except IndexError:
+    #         log("Error: " + str(IndexError))
+    #         pass
+    #         return
+    #
+    #     # if the ping was not read properly just give up :/
+    #     if userToQuote == "":
+    #         return
+    #
+    #     # set up read path
+    #     url = "messages/" + str(userToQuote) + ".txt"
+    #     log("User " + str(message.author) + " requested last words from " + str(userToQuote) + ".")
+    #
+    #     # get all the users quotes
+    #     f = open("messages/" + str(userToQuote) + ".txt", "r")
+    #     quotes = f.readlines()
+    #     f.close()
+    #
+    #     # build the quote message up
+    #     quoteMsg = str(userToQuote) + "s last words were on " + quotes[file_len(url)].split("$$DELIMITER$$")[1].strip("\n") + ", " + str(userToQuote) + " said: " + quotes[file_len(url)].split("$$DELIMITER$$")[0]
+    #     log("Got last words: " + quoteMsg + ".")
+    #     await message.channel.send(quoteMsg)
+
     """GIVE ALL COMMAND"""
     if text.upper().startswith(prefix + "GIVE ALL"):
         # get the users role
@@ -137,6 +170,10 @@ async def on_message(message):
 
         await message.channel.send(ping)
         log("user " + str(message.author) + " requested ping (" + str(ping) + ")")
+
+    """HELP COMMAND"""
+    if text.upper() == (prefix + "HELP"):
+        await message.channel.send("You can find my GitHub page at https://github.com/r333mo/jezza, the README has my commands and features.")
 
     """BAD WORDS FILTER"""
     # check if it is in the message
@@ -188,7 +225,7 @@ def file_len(fname):
 
 
 def log(msg):
-    print(str(datetime.datetime.now().strftime("%x %X")) + ": " + str(msg))
+    print(str(datetime.datetime.now().strftime("%c")) + ": " + str(msg))
 
 # start bot up.
 readBadwords()
