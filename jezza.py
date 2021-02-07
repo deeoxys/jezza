@@ -42,12 +42,12 @@ async def on_message(message):
 
     # set up variables required for quoting
     filepath = "messages/" + str(message.author) + ".txt"
-    text = str(message.content)
+    text = str(message.content).upper()
     file_name = ""
     quotes = []
 
     # ignore commands, these are the main ones i have thought of
-    if not message.content.startswith("/") and not message.content.startswith("!") and not message.content.startswith("-") and not message.content.startswith("j"):
+    if not message.content.startswith("/") and not message.content.startswith("!") and not message.content.startswith("-") and not message.content.startswith("j") and not message.content.startswith("*"):
         # open file with append mode
         f = open(str(filepath), "a")
         # append message with the DELIMITER that hopefully no one ever sends! and the datetime
@@ -55,7 +55,9 @@ async def on_message(message):
         f.close()
 
     """ QUOTE COMMAND"""
-    if text.upper().startswith(prefix + "QUOTE"):
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+    if text.startswith(prefix + "QUOTE") or text.startswith(prefix + "Q"):
         # some variables we need
         quoteMsg = ""
         quoteIndex = 0
@@ -95,46 +97,76 @@ async def on_message(message):
         quoteMsg = "On " + quotes[seed].split("$$DELIMITER$$")[1].strip("\n") + ", " + str(userToQuote) + " said: " + quotes[seed].split("$$DELIMITER$$")[0]
         log("Got quote: " + quoteMsg + ".")
         await message.channel.send(quoteMsg)
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
 
     # """LASTWORDS COMMAND"""
-    # if text.upper().startswith(prefix + "LASTWORDS"):
-    #     # some variables we need
-    #     quoteMsg = ""
-    #     userToQuote = ""
-    #
-    #
-    #     # one of many try catches that hopefully stop the main exceptions that could occur
-    #     try:
-    #         userToQuote = client.get_user(message.mentions[0].id)
-    #     except IndexError:
-    #         log("Error: " + str(IndexError))
-    #         pass
-    #         return
-    #
-    #     # if the ping was not read properly just give up :/
-    #     if userToQuote == "":
-    #         return
-    #
-    #     # set up read path
-    #     url = "messages/" + str(userToQuote) + ".txt"
-    #     log("User " + str(message.author) + " requested last words from " + str(userToQuote) + ".")
-    #
-    #     # get all the users quotes
-    #     f = open("messages/" + str(userToQuote) + ".txt", "r")
-    #     quotes = f.readlines()
-    #     f.close()
-    #
-    #     # build the quote message up
-    #     quoteMsg = str(userToQuote) + "s last words were on " + quotes[file_len(url)].split("$$DELIMITER$$")[1].strip("\n") + ", " + str(userToQuote) + " said: " + quotes[file_len(url)].split("$$DELIMITER$$")[0]
-    #     log("Got last words: " + quoteMsg + ".")
-    #     await message.channel.send(quoteMsg)
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+    if text.startswith(prefix + "LASTWORDS") or text.startswith(prefix + "LW"):
+        # some variables we need
+        quoteMsg = ""
+        userToQuote = ""
+        # one of many try catches that hopefully stop the main exceptions that could occur
+        try:
+            userToQuote = client.get_user(message.mentions[0].id)
+        except IndexError:
+            log("Error: " + str(IndexError))
+            pass
+            return
+        # if the ping was not read properly just give up :/
+        if userToQuote == "":
+            return
+
+        # set up read path
+        url = "messages/" + str(userToQuote) + ".txt"
+        log("User " + str(message.author) + " requested last words from " + str(userToQuote) + ".")
+        # get all the users quotes
+        f = open("messages/" + str(userToQuote) + ".txt", "r")
+        quotes = f.readlines()
+        f.close()
+        lastQuoteIndex = int(file_len(url) - 1)
+
+        # build the quote message up
+        quoteMsg = "On " + quotes[lastQuoteIndex].split("$$DELIMITER$$")[1].strip("\n") + ", " + str(userToQuote) + " said: " + quotes[lastQuoteIndex].split("$$DELIMITER$$")[0]
+        log("Got last words: " + quoteMsg + ".")
+        await message.channel.send(quoteMsg)
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+
+    """MESSAGE COUNT COMMAND"""
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+    if text.startswith(prefix + "MESSAGECOUNT") or text.startswith(prefix + "MC"):
+        # one of many try catches that hopefully stop the main exceptions that could occur
+        try:
+            userToQuote = client.get_user(message.mentions[0].id)
+        except IndexError:
+            log("Error: " + str(IndexError))
+            pass
+            return
+
+        # if the ping was not read properly just give up :/
+        if userToQuote == "":
+            return
+
+        # set up read path
+        url = "messages/" + str(userToQuote) + ".txt"
+        log("User " + str(message.author) + " requested message count from " + str(userToQuote) + ".")
+
+        await message.channel.send(str(userToQuote) + " has sent " + str(file_len(url)) + " messages.")
+        log("Responded with: " + str(userToQuote) + " has sent " + str(file_len(url)) + " messages.")
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
 
     """GIVE ALL COMMAND"""
-    if text.upper().startswith(prefix + "GIVE ALL"):
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+    if text.startswith(prefix + "GIVE ALL"):
         # get the users role
         role_names = [role.name for role in message.author.roles]
         # check if they have god role
-        if not "God" in role_names:
+        if not "Admin" in role_names:
             log("Non-admin user " + str(message.author) + " tried to use admin command (GIVE ALL)!")
             return
 
@@ -155,47 +187,93 @@ async def on_message(message):
 
         await message.channel.send("Successfully gave " + str(count) + " users DJ!")
         log("user " + str(message.author) + " gave all ("+ str(count) + ") users DJ role. (" + str(message.guild.name) + ").")
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
 
     """UPTIME COMMAND"""
-    if text.upper() == (prefix + "UPTIME"):
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+    if text == (prefix + "UPTIME"):
         uptime = ("%s seconds" % (round(time.time() - start_time)))
 
         await message.channel.send(uptime)
         log("user " + str(message.author) + " requested uptime (" + uptime + ")")
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
 
     """PING COMMAND"""
-    if text.upper() == (prefix + "PING"):
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+    if text == (prefix + "PING"):
         # get latency/ping/RTT
         ping = ("%s ms" % round(client.latency))
 
         await message.channel.send(ping)
         log("user " + str(message.author) + " requested ping (" + str(ping) + ")")
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
 
     """HELP COMMAND"""
-    if text.upper() == (prefix + "HELP"):
-        await message.channel.send("You can find my GitHub page at https://github.com/r333mo/jezza, the README has my commands and features.")
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+    if text == (prefix + "HELP"):
+        help = str(
+        """
+**##########     JEZZA BOT COMMAND LIST     ##########**
+```markdown
++       PING -> Bot ping.
++       UPTIME -> Bot uptime in seconds.
++       QUOTE <mention user> -> Gets a random quote from a user. (Alias Q)
++       MESSAGECOUNT <mention user> -> Gets total message count from a user. (AliasMC)
++       GIVE ALL <role> -> Give all users a specified role (requires an admin role).
+
+>    My full README can be found at https://github.com/r333mo/jezza.
+```**##########################################**
+""")
+
+        await message.channel.send(help)
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+
+    """GET HISTORY COMMAND"""
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
+    if text == (prefix + "GETHISTORY"):
+        messages = await message.channel.history(limit = 100).flatten()
+        randomMessage = random.choice(messages)
+        await message.channel.send(type(randomMessage))
+        msgToSend = client.get_message(randomMessage)
+
+        await message.channel.send(msgToSend)
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
 
     """BAD WORDS FILTER"""
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
     # check if it is in the message
-    if text.upper() in badwords:
+    if text in badwords:
         # delet
         await message.delete()
         # mock them
         await message.channel.send("deleted illegal message posted by " + str(message.author))
         log("deleted illegal message posted by " + str(message.author))
+
     try:
         # in case there was no file attachments
         file_name = message.attachments[0].url
     except IndexError:
         pass
 
-    # for files
-    if file_name in badwords:
-        # delet
-        await message.delete()
-        # mock them
-        await message.channel.send("deleted illegal image posted by " + str(message.author))
-        log("deleted illegal image posted by " + str(message.author))
+    for badword in badwords:
+        if file_name.upper().__contains__(badword):
+            # delet
+            await message.delete()
+            # mock them
+            await message.channel.send("deleted illegal file posted by " + str(message.author))
+            log("deleted illegal file posted by " + str(message.author))
+    # ******************************************************************************************************************
+    # ******************************************************************************************************************
 
 # so folk cant scoop the bot.
 def readKey():
@@ -222,7 +300,6 @@ def file_len(fname):
         for i, l in enumerate(f):
             pass
     return i + 1
-
 
 def log(msg):
     print(str(datetime.datetime.now().strftime("%c")) + ": " + str(msg))

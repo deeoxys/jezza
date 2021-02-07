@@ -27,7 +27,8 @@ Bot is NOT case sensitive.
 COMMAND LIST:
 PING -> Bot ping.
 UPTIME -> Bot uptime in seconds.
-QUOTE <mention user> -> Gets a random quote from a user.
+QUOTE <mention user> -> Gets a random quote from a user. (Alias "Q")
+MESSAGECOUNT <mention user> -> Gets total message count from a user. (Alias "MC")
 GIVE ALL <role> -> Give all users a specified role (requires an admin role).
 
 OTHER FEATURES:
