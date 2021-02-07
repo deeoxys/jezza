@@ -3,6 +3,7 @@ JEZZA BOT
 
 TODO be a bit more efficient and use functions and procedures for stuff
 TODO loop through ENTIRE server history and get quotes (this may be possible or may NOT idk)
+TODO fix @everone exploit
 """
 
 # imports
