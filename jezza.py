@@ -32,24 +32,36 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    # ignore ourselves and other bots
+    # ignore ourselves
     if message.author == client.user:
         return
+    # ignore bots
     if message.author.bot:
+        return
+    # ignore nulls
+    if message.content == "":
         return
 
     # set up variables required for quoting
     filepath = "messages/" + str(message.author) + ".txt"
-    text = str(message.content).upper()
+    try:
+        text = str(message.content).upper()
+    except:
+        log("Handled exception")
+        return
+
     file_name = ""
     quotes = []
 
     # ignore commands, these are the main ones i have thought of
-    if not message.content.startswith("/") and not message.content.startswith("!") and not message.content.startswith("-") and not message.content.startswith("j") and not message.content.startswith("*"):
+    if not message.content.startswith("/") and not message.content.startswith("!") and not message.content.startswith("-") and not message.content.startswith("j") and not message.content.startswith("*") and not message.content.startswith("."):
         # open file with append mode
         f = open(str(filepath), "a")
         # append message with the DELIMITER that hopefully no one ever sends! and the datetime
-        f.write(str(message.content) + "$$DELIMITER$$" + str(datetime.datetime.now().strftime("%c")) + "\n")
+        try:
+            f.write(str(message.content) + "$$DELIMITER$$" + str(datetime.datetime.now().strftime("%c")) + "\n")
+        except Exception:
+            log("Error: " + str(Exception))
         f.close()
 
     # QUOTE COMMAND
@@ -65,9 +77,8 @@ async def on_message(message):
         # one of many try catches that hopefully stop the main exceptions that could occur
         try:
             userToQuote = client.get_user(message.mentions[0].id)
-        except IndexError:
-            log("Error: " + str(IndexError))
-            pass
+        except Exception:
+            log("Error: " + str(Exception))
             return
 
         # if the ping was not read properly just give up :/
@@ -108,8 +119,8 @@ async def on_message(message):
         # one of many try catches that hopefully stop the main exceptions that could occur
         try:
             userToQuote = client.get_user(message.mentions[0].id)
-        except IndexError:
-            log("Error: " + str(IndexError))
+        except Exception:
+            log("Error: " + str(Exception))
             pass
             return
         # if the ping was not read properly just give up :/
@@ -126,7 +137,7 @@ async def on_message(message):
         lastQuoteIndex = int(file_len(url) - 1)
 
         # build the quote message up
-        quoteMsg = "On " + quotes[lastQuoteIndex].split("$$DELIMITER$$")[1].strip("\n") + ", " + str(userToQuote) + " said: " + quotes[lastQuoteIndex].split("$$DELIMITER$$")[0]
+        quoteMsg = str(userToQuote) + "'s last words were on " + quotes[lastQuoteIndex].split("$$DELIMITER$$")[1].strip("\n") + ": " + quotes[lastQuoteIndex].split("$$DELIMITER$$")[0]
         log("Got last words: " + quoteMsg + ".")
         await message.channel.send(quoteMsg)
     # ******************************************************************************************************************
@@ -139,8 +150,8 @@ async def on_message(message):
         # one of many try catches that hopefully stop the main exceptions that could occur
         try:
             userToQuote = client.get_user(message.mentions[0].id)
-        except IndexError:
-            log("Error: " + str(IndexError))
+        except Exception:
+            log("Error: " + str(Exception))
             pass
             return
 
@@ -219,10 +230,11 @@ async def on_message(message):
         """
 **##########     JEZZA BOT COMMAND LIST     ##########**
 ```markdown
++       BOT IS NOT CASE SENSITIVE!
 +       PING -> Bot ping.
 +       UPTIME -> Bot uptime in seconds.
-+       QUOTE <mention user> -> Gets a random quote from a user. (Alias Q)
-+       MESSAGECOUNT <mention user> -> Gets total message count from a user. (AliasMC)
++       QUOTE <mention user> -> Gets a random quote from a user. (Alias 'Q').
++       MESSAGECOUNT <mention user> -> Gets total message count from a user. (Alias 'MC').
 +       GIVE ALL <role> -> Give all users a specified role (requires an admin role).
 ```
 >    My full README can be found at: https://github.com/r333mo/jezza.
