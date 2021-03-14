@@ -1,20 +1,20 @@
 ````                                                                                                                                                                                                                                                                               
-          JJJJJJJJJJJEEEEEEEEEEEEEEEEEEEEEEZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ               AAA               
-          J:::::::::JE::::::::::::::::::::EZ:::::::::::::::::Z:::::::::::::::::Z              A:::A              
-          J:::::::::JE::::::::::::::::::::EZ:::::::::::::::::Z:::::::::::::::::Z             A:::::A             
-          JJ:::::::JJEE::::::EEEEEEEEE::::EZ:::ZZZZZZZZ:::::ZZ:::ZZZZZZZZ:::::Z             A:::::::A            
-            J:::::J    E:::::E       EEEEEEZZZZZ     Z:::::Z ZZZZZ     Z:::::Z             A:::::::::A           
-            J:::::J    E:::::E                     Z:::::Z           Z:::::Z              A:::::A:::::A          
-            J:::::J    E::::::EEEEEEEEEE          Z:::::Z           Z:::::Z              A:::::A A:::::A         
-            J:::::j    E:::::::::::::::E         Z:::::Z           Z:::::Z              A:::::A   A:::::A        
-            J:::::J    E:::::::::::::::E        Z:::::Z           Z:::::Z              A:::::A     A:::::A       
-JJJJJJJ     J:::::J    E::::::EEEEEEEEEE       Z:::::Z           Z:::::Z              A:::::AAAAAAAAA:::::A      
-J:::::J     J:::::J    E:::::E                Z:::::Z           Z:::::Z              A:::::::::::::::::::::A     
-J::::::J   J::::::J    E:::::E       EEEEEEZZZ:::::Z     ZZZZZZZ:::::Z     ZZZZZ    A:::::AAAAAAAAAAAAA:::::A    
-J:::::::JJJ:::::::J  EE::::::EEEEEEEE:::::EZ::::::ZZZZZZZZ:::Z::::::ZZZZZZZZ:::Z   A:::::A             A:::::A   
- JJ:::::::::::::JJ   E::::::::::::::::::::EZ:::::::::::::::::Z:::::::::::::::::Z  A:::::A               A:::::A  
-   JJ:::::::::JJ     E::::::::::::::::::::EZ:::::::::::::::::Z:::::::::::::::::Z A:::::A                 A:::::A 
-     JJJJJJJJJ       EEEEEEEEEEEEEEEEEEEEEEZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZAAAAAAA                   AAAAAAA                                     
+MMMMMMMM               MMMMMMMM               AAA           YYYYYYY       YYYYYYY
+M:::::::M             M:::::::M              A:::A          Y:::::Y       Y:::::Y
+M::::::::M           M::::::::M             A:::::A         Y:::::Y       Y:::::Y
+M:::::::::M         M:::::::::M            A:::::::A        Y::::::Y     Y::::::Y
+M::::::::::M       M::::::::::M           A:::::::::A       YYY:::::Y   Y:::::YYY
+M:::::::::::M     M:::::::::::M          A:::::A:::::A         Y:::::Y Y:::::Y   
+M:::::::M::::M   M::::M:::::::M         A:::::A A:::::A         Y:::::Y:::::Y    
+M::::::M M::::M M::::M M::::::M        A:::::A   A:::::A         Y:::::::::Y     
+M::::::M  M::::M::::M  M::::::M       A:::::A     A:::::A         Y:::::::Y      
+M::::::M   M:::::::M   M::::::M      A:::::AAAAAAAAA:::::A         Y:::::Y       
+M::::::M    M:::::M    M::::::M     A:::::::::::::::::::::A        Y:::::Y       
+M::::::M     MMMMM     M::::::M    A:::::AAAAAAAAAAAAA:::::A       Y:::::Y       
+M::::::M               M::::::M   A:::::A             A:::::A      Y:::::Y       
+M::::::M               M::::::M  A:::::A               A:::::A  YYYY:::::YYYY    
+M::::::M               M::::::M A:::::A                 A:::::A Y:::::::::::Y    
+MMMMMMMM               MMMMMMMMAAAAAAA                   AAAAAAAYYYYYYYYYYYYY                               
 
 Discord bot written with discord.py.
 Written and somewhat maintained by r333mo for a private server, but feel free to use if you want to.
