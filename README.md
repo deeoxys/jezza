@@ -1,20 +1,20 @@
 ````                                                                                                                                                                                                                                                                               
-FFFFFFFFFFFFFFFFFFFFFFIIIIIIIIIITTTTTTTTTTTTTTTTTTTTTTTMMMMMMMM               MMMMMMMM        CCCCCCCCCCCCC
-F::::::::::::::::::::FI::::::::IT:::::::::::::::::::::TM:::::::M             M:::::::M     CCC::::::::::::C
-F::::::::::::::::::::FI::::::::IT:::::::::::::::::::::TM::::::::M           M::::::::M   CC:::::::::::::::C
-FF::::::FFFFFFFFF::::FII::::::IIT:::::TT:::::::TT:::::TM:::::::::M         M:::::::::M  C:::::CCCCCCCC::::C
-  F:::::F       FFFFFF  I::::I  TTTTTT  T:::::T  TTTTTTM::::::::::M       M::::::::::M C:::::C       CCCCCC
-  F:::::F               I::::I          T:::::T        M:::::::::::M     M:::::::::::MC:::::C              
-  F::::::FFFFFFFFFF     I::::I          T:::::T        M:::::::M::::M   M::::M:::::::MC:::::C              
-  F:::::::::::::::F     I::::I          T:::::T        M::::::M M::::M M::::M M::::::MC:::::C              
-  F:::::::::::::::F     I::::I          T:::::T        M::::::M  M::::M::::M  M::::::MC:::::C              
-  F::::::FFFFFFFFFF     I::::I          T:::::T        M::::::M   M:::::::M   M::::::MC:::::C              
-  F:::::F               I::::I          T:::::T        M::::::M    M:::::M    M::::::MC:::::C              
-  F:::::F               I::::I          T:::::T        M::::::M     MMMMM     M::::::M C:::::C       CCCCCC
-FF:::::::FF           II::::::II      TT:::::::TT      M::::::M               M::::::M  C:::::CCCCCCCC::::C
-F::::::::FF           I::::::::I      T:::::::::T      M::::::M               M::::::M   CC:::::::::::::::C
-F::::::::FF           I::::::::I      T:::::::::T      M::::::M               M::::::M     CCC::::::::::::C
-FFFFFFFFFFF           IIIIIIIIII      TTTTTTTTTTT      MMMMMMMM               MMMMMMMM        CCCCCCCCCCCCC                                     
+MMMMMMMM               MMMMMMMM               AAA           YYYYYYY       YYYYYYY
+M:::::::M             M:::::::M              A:::A          Y:::::Y       Y:::::Y
+M::::::::M           M::::::::M             A:::::A         Y:::::Y       Y:::::Y
+M:::::::::M         M:::::::::M            A:::::::A        Y::::::Y     Y::::::Y
+M::::::::::M       M::::::::::M           A:::::::::A       YYY:::::Y   Y:::::YYY
+M:::::::::::M     M:::::::::::M          A:::::A:::::A         Y:::::Y Y:::::Y   
+M:::::::M::::M   M::::M:::::::M         A:::::A A:::::A         Y:::::Y:::::Y    
+M::::::M M::::M M::::M M::::::M        A:::::A   A:::::A         Y:::::::::Y     
+M::::::M  M::::M::::M  M::::::M       A:::::A     A:::::A         Y:::::::Y      
+M::::::M   M:::::::M   M::::::M      A:::::AAAAAAAAA:::::A         Y:::::Y       
+M::::::M    M:::::M    M::::::M     A:::::::::::::::::::::A        Y:::::Y       
+M::::::M     MMMMM     M::::::M    A:::::AAAAAAAAAAAAA:::::A       Y:::::Y       
+M::::::M               M::::::M   A:::::A             A:::::A      Y:::::Y       
+M::::::M               M::::::M  A:::::A               A:::::A  YYYY:::::YYYY    
+M::::::M               M::::::M A:::::A                 A:::::A Y:::::::::::Y    
+MMMMMMMM               MMMMMMMMAAAAAAA                   AAAAAAAYYYYYYYYYYYYY                               
 
 Discord bot written with discord.py.
 Written and somewhat maintained by r333mo for a private server, but feel free to use if you want to.
