@@ -237,7 +237,7 @@ async def on_message(message):
 +       MESSAGECOUNT <mention user> -> Gets total message count from a user. (Alias 'MC').
 +       GIVE ALL <role> -> Give all users a specified role (requires an admin role).
 ```
->    My full README can be found at: https://github.com/r333mo/jezza.
+>    My full README can be found at: https://github.com/deeoxys/jezza.
 **##########################################**
 """)
 
@@ -287,7 +287,7 @@ async def on_message(message):
 
 # so folk cant scoop the bot.
 def readKey():
-    f = open("assets/.gitignore " + NAME + ".txt", "r")
+    f = open("assets/" + NAME + ".txt", "r")
     key = f.read()
     log("Opened file " + f.name + ", got key (" + key + ").")
     f.close()
@@ -296,7 +296,7 @@ def readKey():
 
 # https://www.youtube.com/watch?v=qQMsLAIqtmU
 def readBadwords():
-    f = open("assets/.gitignore badwords.txt", "r")
+    f = open("assets/badwords.txt", "r")
     for line in f:
         stripped_line = line.strip("\n")
         badwords.append(stripped_line)
